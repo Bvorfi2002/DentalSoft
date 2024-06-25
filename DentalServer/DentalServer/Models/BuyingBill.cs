@@ -1,25 +1,19 @@
 ﻿using System;
 
-public class BuyingBill
+namespace DentalServer.Models
 {
+    public class BuyingBill
+    {
 
-	public int BuyingBillId { get; set; }
-	public Product product { get; set; }
-	public Supplier supplier { get; set; }
-	public double amount { get; set; }
-	public DateTime date { get; set; }
-	public double Tax { get; set; }
-	public Clinic clinic { get; set; }
+        public Guid BuyingBillId { get; set; }
+        public Product Product { get; set; }
+        public Guid ProductId { get; set; }
+        public Supplier Supplier { get; set; }
+        public Guid SupplierId { get; set; }
+        public double Amount { get; set; }
+        public DateTime Date { get; set; } = DateTime.Now;
+        public Clinic Clinic { get; set; }
+        public Guid ClinicId { get; set; }
 
-	public BuyingBill()
-	{
-		date = DateTime.Now;
-		Tax = calculateTax(amount);
-	}
-
-	// TODO: Add logic
-	private double calculateTax(double amount)
-	{
-		return 0;
-	}
+    }
 }

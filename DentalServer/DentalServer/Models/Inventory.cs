@@ -1,12 +1,16 @@
 ﻿using System;
 
-public class Inventory
+namespace DentalServer.Models
 {
-	public IList<Product> products { get; set; }
-	public Clinic clinic { get; set; }
+    public class Inventory
+    {
+        public IList<Product> Products { get; set; }
+        public Clinic Clinic { get; set; }
+        public Guid ClinicId { get; set; }
 
-	public Inventory()
-	{
-		products = new List<Product>();
-	}
+        public Inventory()
+        {
+            Products = new List<Product>();
+        }
+    }
 }

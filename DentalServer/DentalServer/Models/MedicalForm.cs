@@ -2,8 +2,9 @@
 {
     public class MedicalForm
     {
-        public int ClinicId { get; set; }
-        public Question[] Questions { get; set; }
+        public Clinic Clinic { get; set; }
+        public Guid ClinicId { get; set; }
+        public IList<Question> Questions { get; set; }
 
     }
 }

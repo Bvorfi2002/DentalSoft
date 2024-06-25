@@ -1,8 +1,12 @@
 ﻿using System;
 
-public class Supplier
+namespace DentalServer.Models
 {
-	public string Name { get; set; }
-	public string Nipt { get; set; }
-	public string PhoneNumber { get; set; }
+    public class Supplier
+    {
+        public Guid SupplierId { get; set; }
+        public string Name { get; set; }
+        public string Nipt { get; set; }
+        public string PhoneNumber { get; set; }
+    }
 }

@@ -1,30 +1,35 @@
 ﻿using System;
 
-public class Bill
+namespace DentalServer.Models
 {
-	public int BillId { get; set; }
-	public Clinic clinic { get; set; }
-	public DateTime date { get; set; }
-	public string QrLink { get; set; }
-	// TODO: Add patient
-	public AppointmentResult appointment { get; set; }
-	public double Tax { get; set; }
-	public double Amount { get; set; }
-	
+    public class Bill
+    {
+        public Guid BillId { get; set; }
+        public Clinic Clinic { get; set; }
+        public Guid ClinicId { get; set; }
+        public DateTime date { get; set; }
+        public string QrLink { get; set; }
+        public Patient Patient { get; set; }
+        public Guid PatientId { get; set; }
+        public AppointmentResult Appointment { get; set; }
+        public Guid AppointmentResultId { get; set; }
+        public double Amount { get; set; }
 
-	public Bill()
-	{
-		date = DateTime.Now;
-		Amount = calculateAmount(appointment);
-		Tax = calculateTax(Amount);
-	}
+        public Bill()
+        {
+            date = DateTime.Now;
+            Amount = calculateAmount(appointment);
+        }
 
-	// TODO: Iterate services to calculate amount
-	private double calculateAmount(AppointmentResult appointment)
-	{
-		return 0;
-	}
-
-	// TODO: Add logic of tax calculation
-	private double calculateTax(double amount) { return 0; }
+        private double calculateAmount(AppointmentResult appointment)
+        {
+            IList<AppointmentResultServices> services = appointment.Services;
+            double amount = 0;
+            for (int i = 0; i < services.Count; i++)
+            {
+                amount += services[i].Service.Price;
+            }
+            return amount;
+        }
+    }
 }
