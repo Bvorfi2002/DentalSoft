@@ -1,5 +1,35 @@
-﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
-################################################################################
+﻿# Ignore Visual Studio files
+.vs/
+*.suo
+*.user
+*.sln.docstates
 
-/DentalServer/DentalServer/appsettings.json
+# Ignore Rider files
+.idea/
+
+# Ignore build output
+/bin/
+/obj/
+
+# Ignore NuGet packages
+*.nuget.props
+*.lock
+packages/
+
+# Ignore .NET SDK files
+*.dll
+*.exe
+
+# Ignore user-specific files
+*.vscode/
+*.vssettings
+
+# Ignore SQLite database files
+*.sqlite
+
+# Ignore SQL Server database files
+*.mdf
+*.ldf
+
+# Ignore configuration files that may contain sensitive information
+appsettings.json
