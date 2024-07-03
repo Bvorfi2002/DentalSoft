@@ -1,14 +1,22 @@
 ﻿using System;
 
-public class Clinic
+namespace DentalServer.Models
 {
-	public string ClinicName { get; set; }
-	public Inventory inventory { get; set; }
-	public IList<Supplier> suppliers { get; set; }
+    public class Clinic
+    {
+        public Guid ClinicId { get; set; }
+        public string ClinicName { get; set; }
+        public Inventory inventory { get; set; }
+        public IList<Supplier> suppliers { get; set; }
+        public IList<Bill> bills { get; set; }
+        public IList<BuyingBill> buyingBills { get; set; }
 
-	public Clinic()
-	{
-		inventory = new Inventory() { clinic = this };
-		suppliers = new List<Supplier>();
-	}
+        public Clinic()
+        {
+            inventory = new Inventory() { Clinic = this };
+            suppliers = new List<Supplier>();
+            bills = new List<Bill>();
+            buyingBills = new List<BuyingBill>();
+        }
+    }
 }

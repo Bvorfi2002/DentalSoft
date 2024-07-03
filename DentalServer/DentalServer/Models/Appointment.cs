@@ -1,13 +1,19 @@
-﻿using System;
-
-public class Appointment
+﻿namespace DentalServer.Models
 {
-	public Clinic clinic {  get; set; }
-	public DateTime date { get; set; }
-	// TODO: Add patient and doctor
-	// TODO: Add services
+    public class Appointment
+    {
+        public Guid AppointmentId { get; set; }
+        public Clinic Clinic { get; set; }
+        public Guid ClinicId { get; set; }
+        public DateTime Date { get; set; }
+        public Patient Patient { get; set; }
+        public Guid PatientId { get; set; }
+        public Doctor Doctor { get; set; }
+        public Guid DoctorId { get; set; }
+        public IList<AppointmentServices> Services { get; set; }
 
-	public Appointment()
-	{
-	}
+        public Appointment()
+        {
+        }
+    }
 }

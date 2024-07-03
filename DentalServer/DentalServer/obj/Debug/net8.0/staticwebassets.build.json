@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "yJFmURKfCWydy98z8bw49hnO7UxuB4ykyGKqiEqB+dU=",
+  "Source": "DentalServer",
+  "BasePath": "_content/DentalServer",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
