@@ -4523,19 +4523,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\AG\\.nuget\\packages\\": {}
+    "C:\\Users\\safar\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\AG\\OneDrive\\Documents\\Projects\\DentalSoft\\DentalServer\\DentalServer\\DentalServer.csproj",
+      "projectUniqueName": "C:\\Projects\\DentalSoft\\DentalServer\\DentalServer\\DentalServer.csproj",
       "projectName": "DentalServer",
-      "projectPath": "C:\\Users\\AG\\OneDrive\\Documents\\Projects\\DentalSoft\\DentalServer\\DentalServer\\DentalServer.csproj",
-      "packagesPath": "C:\\Users\\AG\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\AG\\OneDrive\\Documents\\Projects\\DentalSoft\\DentalServer\\DentalServer\\obj\\",
+      "projectPath": "C:\\Projects\\DentalSoft\\DentalServer\\DentalServer\\DentalServer.csproj",
+      "packagesPath": "C:\\Users\\safar\\.nuget\\packages\\",
+      "outputPath": "C:\\Projects\\DentalSoft\\DentalServer\\DentalServer\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\AG\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\safar\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

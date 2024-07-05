@@ -1,5 +1,4 @@
 C:\Projects\DentalSoft\DentalServer\DentalServer\bin\Debug\net8.0\appsettings.Development.json
-C:\Projects\DentalSoft\DentalServer\DentalServer\bin\Debug\net8.0\appsettings.json
 C:\Projects\DentalSoft\DentalServer\DentalServer\bin\Debug\net8.0\DentalServer.exe
 C:\Projects\DentalSoft\DentalServer\DentalServer\bin\Debug\net8.0\DentalServer.deps.json
 C:\Projects\DentalSoft\DentalServer\DentalServer\bin\Debug\net8.0\DentalServer.runtimeconfig.json
