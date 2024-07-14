@@ -33,3 +33,14 @@ packages/
 
 # Ignore configuration files that may contain sensitive information
 appsettings.json
+/DentalServer/DentalServer/bin/Debug/net8.0/DentalServer.dll
+/DentalServer/DentalServer/bin/Debug/net8.0/DentalServer.exe
+/DentalServer/DentalServer/bin/Debug/net8.0/DentalServer.pdb
+/DentalServer/DentalServer/obj/Debug/net8.0/ref/DentalServer.dll
+/DentalServer/DentalServer/obj/Debug/net8.0/refint/DentalServer.dll
+/DentalServer/DentalServer/obj/Debug/net8.0/apphost.exe
+/DentalServer/DentalServer/obj/Debug/net8.0/DentalServer.AssemblyInfo.cs
+/DentalServer/DentalServer/obj/Debug/net8.0/DentalServer.AssemblyInfoInputs.cache
+/DentalServer/DentalServer/obj/Debug/net8.0/DentalServer.dll
+/DentalServer/DentalServer/obj/Debug/net8.0/DentalServer.pdb
+/DentalServer/DentalServer/obj/Debug/net8.0/DentalServer.sourcelink.json
