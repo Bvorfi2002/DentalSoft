@@ -292,6 +292,12 @@ namespace DentalServer.Data
             .HasOne<PaymentData>(u => u.PaymentData)
             .WithOne(pd => pd.User)
             .HasForeignKey<PaymentData>(pd => pd.UserId);
+
+            // User - Clinic Relationship
+            modelBuilder.Entity<User>()
+               .HasOne(u => u.Clinic)
+               .WithMany(c => c.Users) // Assuming Clinic has a collection of Users
+               .HasForeignKey(u => u.ClinicId);
         }
 
     }

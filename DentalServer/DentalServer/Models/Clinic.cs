@@ -10,6 +10,7 @@ namespace DentalServer.Models
         public IList<Supplier> suppliers { get; set; }
         public IList<Bill> bills { get; set; }
         public IList<BuyingBill> buyingBills { get; set; }
+        public IList<User> Users { get; set; }
 
         public Clinic()
         {
