@@ -29,6 +29,9 @@ namespace DentalServer.Data
         public DbSet<Service> Services { get; set; }
         public DbSet<Supplier> Suppliers { get; set; }
 
+        public DbSet<User> Users { get; set; }
+        public DbSet<PaymentData> PaymentDatas { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -282,6 +285,13 @@ namespace DentalServer.Data
             // Supplier
             modelBuilder.Entity<Supplier>()
                 .HasKey(s => s.SupplierId);
+
+
+            // User - Payment Relationship
+            modelBuilder.Entity<User>()
+            .HasOne<PaymentData>(u => u.PaymentData)
+            .WithOne(pd => pd.User)
+            .HasForeignKey<PaymentData>(pd => pd.UserId);
         }
 
     }
