@@ -44,3 +44,10 @@ appsettings.json
 /DentalServer/DentalServer/obj/Debug/net8.0/DentalServer.dll
 /DentalServer/DentalServer/obj/Debug/net8.0/DentalServer.pdb
 /DentalServer/DentalServer/obj/Debug/net8.0/DentalServer.sourcelink.json
+/DentalServer/DentalServer/obj/Debug/net8.0/DentalServer.assets.cache
+/DentalServer/DentalServer/obj/Debug/net8.0/DentalServer.csproj.CoreCompileInputs.cache
+/DentalServer/DentalServer/obj/DentalServer.csproj.nuget.dgspec.json
+/DentalServer/DentalServer/obj/DentalServer.csproj.nuget.g.props
+/DentalServer/DentalServer/obj/project.assets.json
+/DentalServer/DentalServer/obj/project.nuget.cache
+*.csproj
