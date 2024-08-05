@@ -1,12 +1,12 @@
-import React from 'react';
-import { MenuSelect } from '../components/Form';
-import { TbUser } from 'react-icons/tb';
-import { AiOutlinePoweroff } from 'react-icons/ai';
-import { MdOutlineNotificationsNone } from 'react-icons/md';
-import NotificationComp from '../components/NotificationComp';
-import { useNavigate } from 'react-router-dom';
-import { BiMenu } from 'react-icons/bi';
-import MenuDrawer from '../components/Drawer/MenuDrawer';
+import React from "react";
+import { MenuSelect } from "../components/Form";
+import { TbUser } from "react-icons/tb";
+import { AiOutlinePoweroff } from "react-icons/ai";
+import { MdOutlineNotificationsNone } from "react-icons/md";
+import NotificationComp from "../components/NotificationComp";
+import { useNavigate } from "react-router-dom";
+import { BiMenu } from "react-icons/bi";
+import MenuDrawer from "../components/Drawer/MenuDrawer";
 
 function Header() {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -19,17 +19,18 @@ function Header() {
   const navigate = useNavigate();
   const DropDown1 = [
     {
-      title: 'Profile',
+      title: "Profile",
       icon: TbUser,
       onClick: () => {
-        navigate('/settings');
+        navigate("/settings");
       },
     },
     {
-      title: 'Logout',
+      title: "Logout",
       icon: AiOutlinePoweroff,
       onClick: () => {
-        navigate('/login');
+        localStorage.removeItem("user");
+        navigate("/login");
       },
     },
   ];
