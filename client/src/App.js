@@ -1,45 +1,51 @@
-// ********* Delight - Dentist Website is created by Zpunet ******************
-// ********* If you get an error please contact us ******
-// ******** Email:info@codemarketi.com *********
-// ********* Website:www.codemarketi.com *********
-// ********* Phone:+255 762 352 746 *********
-// ********* Youtub Channel: https://www.youtube.com/channel/UCOYwYO-LEsrjqBs6xXSfq1w *********
-
-// ******** Support my work with *********
-// ********* https://www.patreon.com/zpunet *********
-// ********* https://www.buymeacoffee.com/zpunet *********
-
-// ********* This is the main component of the website *********
-
-import './App.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Aos from 'aos';
-import Dashboard from './screens/Dashboard';
-import Toast from './components/Notifications/Toast';
-import Payments from './screens/Payments/Payments';
-import Appointments from './screens/Appointments';
-import Patients from './screens/Patients/Patients';
-import Campaings from './screens/Campaings';
-import Services from './screens/Services';
-import Invoices from './screens/Invoices/Invoices';
-import Settings from './screens/Settings';
-import CreateInvoice from './screens/Invoices/CreateInvoice';
-import EditInvoice from './screens/Invoices/EditInvoice';
-import PreviewInvoice from './screens/Invoices/PreviewInvoice';
-import EditPayment from './screens/Payments/EditPayment';
-import PreviewPayment from './screens/Payments/PreviewPayment';
-import Medicine from './screens/Medicine';
-import PatientProfile from './screens/Patients/PatientProfile';
-import CreatePatient from './screens/Patients/CreatePatient';
-import Doctors from './screens/Doctors/Doctors';
-import DoctorProfile from './screens/Doctors/DoctorProfile';
-import Receptions from './screens/Receptions';
-import NewMedicalRecode from './screens/Patients/NewMedicalRecode';
-import NotFound from './screens/NotFound';
-import Login from './screens/Login';
+import "./App.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Aos from "aos";
+import Dashboard from "./screens/Dashboard";
+import Toast from "./components/Notifications/Toast";
+import Payments from "./screens/Payments/Payments";
+import Appointments from "./screens/Appointments";
+import Patients from "./screens/Patients/Patients";
+import Campaings from "./screens/Campaings";
+import Services from "./screens/Services";
+import Invoices from "./screens/Invoices/Invoices";
+import Settings from "./screens/Settings";
+import CreateInvoice from "./screens/Invoices/CreateInvoice";
+import EditInvoice from "./screens/Invoices/EditInvoice";
+import PreviewInvoice from "./screens/Invoices/PreviewInvoice";
+import EditPayment from "./screens/Payments/EditPayment";
+import PreviewPayment from "./screens/Payments/PreviewPayment";
+import Medicine from "./screens/Medicine";
+import PatientProfile from "./screens/Patients/PatientProfile";
+import CreatePatient from "./screens/Patients/CreatePatient";
+import Doctors from "./screens/Doctors/Doctors";
+import DoctorProfile from "./screens/Doctors/DoctorProfile";
+import Receptions from "./screens/Receptions";
+import NewMedicalRecode from "./screens/Patients/NewMedicalRecode";
+import NotFound from "./screens/NotFound";
+import Login from "./screens/Login";
+import ProtectedRoute from "./components/ProtectedRoute";
+import AdminDashboard from "./screens/AdminDashboard";
+import { Navigate } from "react-router-dom";
 
 function App() {
   Aos.init();
+
+  // Function to determine the default route based on user role
+  const DefaultRoute = () => {
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (!user) return <Navigate to="/login" />;
+
+    switch (user.role) {
+      case "admin":
+        return <Navigate to="/admin" />;
+      case "doctor":
+        return <Navigate to="/doctor" />;
+      default:
+        return <Navigate to="/unauthorized" />;
+    }
+  };
 
   return (
     <>
@@ -48,7 +54,26 @@ function App() {
       {/* Routes */}
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Dashboard />} />
+          <Route path="/" element={<DefaultRoute />} />
+
+          {/* Protected Routes */}
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute allowedRoles={["admin"]}>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/doctor"
+            element={
+              <ProtectedRoute allowedRoles={["doctor"]}>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+
           {/* invoce */}
           <Route path="/invoices" element={<Invoices />} />
           <Route path="/invoices/create" element={<CreateInvoice />} />
