@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Aos from "aos";
 import Dashboard from "./screens/Dashboard";
 import Toast from "./components/Notifications/Toast";
@@ -26,12 +26,10 @@ import NotFound from "./screens/NotFound";
 import Login from "./screens/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AdminDashboard from "./screens/AdminDashboard";
-import { Navigate } from "react-router-dom";
+
 
 function App() {
   Aos.init();
-
-  // Function to determine the default route based on user role
   const DefaultRoute = () => {
     const user = JSON.parse(localStorage.getItem("user"));
 
@@ -42,6 +40,10 @@ function App() {
         return <Navigate to="/admin" />;
       case "doctor":
         return <Navigate to="/doctor" />;
+      case "finance":
+        return <Navigate to="/finance" />;
+      case "receptionist":
+        return <Navigate to="/reception" />;
       default:
         return <Navigate to="/unauthorized" />;
     }
@@ -54,14 +56,21 @@ function App() {
       {/* Routes */}
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<DefaultRoute />} />
+          <Route path="/login" element={<Login />} />
 
-          {/* Protected Routes */}
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path="/admin"
             element={
               <ProtectedRoute allowedRoles={["admin"]}>
-                <Dashboard />
+                <AdminDashboard />
               </ProtectedRoute>
             }
           />
@@ -69,6 +78,22 @@ function App() {
             path="/doctor"
             element={
               <ProtectedRoute allowedRoles={["doctor"]}>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/finance"
+            element={
+              <ProtectedRoute allowedRoles={["finance"]}>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/reception"
+            element={
+              <ProtectedRoute allowedRoles={["receptionist"]}>
                 <Dashboard />
               </ProtectedRoute>
             }
@@ -94,7 +119,6 @@ function App() {
           {/* reception */}
           <Route path="/receptions" element={<Receptions />} />
           {/* others */}
-          <Route path="/login" element={<Login />} />
           <Route path="/appointments" element={<Appointments />} />
           <Route path="/campaigns" element={<Campaings />} />
           <Route path="/medicine" element={<Medicine />} />

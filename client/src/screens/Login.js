@@ -3,23 +3,57 @@ import { Button, Input } from "../components/Form";
 import { BiLogInCircle } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 
+const users = [
+  { email: "admin@gmail.com", password: "password", role: "admin" },
+  { email: "doctor@gmail.com", password: "password", role: "doctor" },
+  { email: "finance@gmail.com", password: "password", role: "finance" },
+  { email: "receptionist@gmail.com", password: "password", role: "receptionist" },
+];
+
 function Login() {
-  const [email, setEmail] = useState("admin@gmail.com");
-  const [password, setPassword] = useState("password");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
+  const handleEmailChange = (e) => {
+    console.log("Email input change:", e.target.value);
+    setEmail(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    console.log("Password input change:", e.target.value);
+    setPassword(e.target.value);
+  };
+
   const handleLogin = (e) => {
     e.preventDefault();
+    console.log("Attempting login with:", email, password);
 
-    // Example login logic (replace with your actual authentication logic)
-    if (email === "admin@gmail.com" && password === "password") {
-      // Save user info (e.g., in localStorage)
-      localStorage.setItem("user", JSON.stringify({ email, role: "admin" }));
+    const user = users.find((user) => user.email === email && user.password === password);
 
-      // Navigate to the dashboard or appropriate page
-      navigate("/");
+    if (user) {
+      console.log("Login successful:", user);
+      localStorage.setItem("user", JSON.stringify({ email: user.email, role: user.role }));
+
+      switch (user.role) {
+        case "admin":
+          navigate("/admin");
+          break;
+        case "doctor":
+          navigate("/doctor");
+          break;
+        case "finance":
+          navigate("/finance");
+          break;
+        case "receptionist":
+          navigate("/reception");
+          break;
+        default:
+          navigate("/unauthorized");
+      }
     } else {
+      console.log("Login failed: Invalid email or password");
       setError("Invalid email or password");
     }
   };
@@ -42,10 +76,7 @@ function Login() {
             color={true}
             placeholder="admin@gmail.com"
             value={email}
-            onChange={(e) => {
-              console.log("Email input changed:", e.target.value);
-              setEmail(e.target.value);
-            }}
+            onChange={handleEmailChange}
           />
           <Input
             label="Password"
@@ -53,10 +84,7 @@ function Login() {
             color={true}
             placeholder="*********"
             value={password}
-            onChange={(e) => {
-              console.log("Password input changed:", e.target.value);
-              setPassword(e.target.value);
-            }}
+            onChange={handlePasswordChange}
           />
         </div>
         {error && <p className="text-red-500">{error}</p>}
